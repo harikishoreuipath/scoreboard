@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,7716</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,7848</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -64,6 +64,9 @@
       <x:String>UiPath.Mail</x:String>
       <x:String>UiPath.Mail.SMTP.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -144,9 +147,12 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="787.3333333333334,7571.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="787.3333333333334,7703.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_sql" />
       <Variable x:TypeArguments="x:Int32" Name="api_response_code" />
@@ -182,7 +188,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="Dsn=PostgreSQL35W" DatabaseConnection="[db_connection_str]" />
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dt_sql]" DisplayName="Run Query" ExistingDbConnection="[db_connection_str]" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT *&#xD;&#xA;FROM score_board_users&#xD;&#xA;WHERE to_date(score_board_date, 'DD-MM-YYYY') = CURRENT_DATE;">
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dt_sql]" DisplayName="Run Query" ExistingDbConnection="[db_connection_str]" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT *&#xA;FROM score_board_users&#xA;WHERE to_date(score_board_date, 'DD-MM-YYYY') = CURRENT_DATE;">
               <ui:ExecuteQuery.Parameters>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:ExecuteQuery.Parameters>
@@ -208,7 +214,7 @@
       </TryCatch>
       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488.6666666666667,54" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,1592" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,1595.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -234,7 +240,7 @@
               </Assign.Value>
             </Assign>
             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[path.GetExtension(file_n).ToLower]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,82.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[file_path]</OutArgument>
               </Assign.To>
@@ -252,7 +258,7 @@
             </Assign>
             <ui:ReadTextFile File="{x:Null}" Content="[text_out]" DisplayName="Read Text File" FileName="C:\Users\User\Downloads\Whatsapp Log file  2025-10-27" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[text_out]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,82.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap:VirtualizedContainerService.HintSize="434,88.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[updated_txt]</OutArgument>
               </Assign.To>
@@ -274,7 +280,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="725.3333333333334,6650" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="725.3333333333334,6782" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -282,22 +288,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <If Condition="[dt_sql.Rows.Count &gt; 0]" DisplayName="Process-If" sap:VirtualizedContainerService.HintSize="686.6666666666666,6410.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[dt_sql.Rows.Count &gt; 0]" DisplayName="Process-If" sap:VirtualizedContainerService.HintSize="686.6666666666666,6542.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="652.6666666666666,6226.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence sap:VirtualizedContainerService.HintSize="652.6666666666666,6358.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="610.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[dt_sql.Rows.Count.ToString+&quot; Rows Fetched from Database&quot;]" />
-              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: WhatsApp" sap:VirtualizedContainerService.HintSize="610.6666666666666,5954.666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="b3bff615-18b2-4e5d-93ad-2ecd19cfb684" Version="V2" WindowResize="Maximize">
+              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: WhatsApp" sap:VirtualizedContainerService.HintSize="610.6666666666666,6086.666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="b3bff615-18b2-4e5d-93ad-2ecd19cfb684" Version="V2" WindowResize="Maximize">
                 <uix:NApplicationCard.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="576.6666666666666,5735.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="576.6666666666666,5867.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="upr:ILocalResource" Name="attachmen" />
                       </Sequence.Variables>
@@ -306,13 +312,13 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_sql]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514.6666666666666,5619.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_sql]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514.6666666666666,5751.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480.6666666666667,5429.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480.6666666666667,5561.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="group_name" />
                                 <Variable x:TypeArguments="x:String" Name="pdf_url" />
@@ -563,7 +569,7 @@
                                   </ui:Target>
                                 </ui:Click.Target>
                               </ui:Click>
-                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="438.6666666666667,157.33333333333334" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[group_name+&quot;[k(enter)]&quot;]">
+                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="1500" DelayMS="1000" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="438.6666666666667,157.33333333333334" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[group_name+&quot;[k(enter)]&quot;]">
                                 <ui:TypeInto.Target>
                                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e46147c6-cbec-4a44-bea9-f516e4351366" InformativeScreenshot="2f6dc75bc320735cc59ce9a99808b960" Selector="&lt;html app='chrome.exe' title='*WhatsApp' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='side' tag='DIV' innertext='Ask Meta AI or Search' /&gt;&lt;webctrl tag='P' /&gt;">
                                     <ui:Target.TimeoutMS>
@@ -675,6 +681,7 @@
                               </ui:TypeInto>
                               <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[text_file_path]" sap:VirtualizedContainerService.HintSize="438.6666666666667,136.66666666666666" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[pdf_name+&quot; ----------uploaded to &quot;+group_name+&quot; ---------at &quot;+Now.ToString]" UseDefaultEncoding="False" />
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438.6666666666667,147.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[pdf_name+&quot; --------uploaded to &quot;+group_name+&quot; -------at &quot;+Now.ToString]" />
+                              <Delay Duration="00:00:06" sap:VirtualizedContainerService.HintSize="438.6666666666667,92" sap2010:WorkflowViewState.IdRef="Delay_2" />
                               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438.6666666666667,54" sap2010:WorkflowViewState.IdRef="CommentOut_8">
                                 <ui:CommentOut.Body>
                                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,333.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_12">
