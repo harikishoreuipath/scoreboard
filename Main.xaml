@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,7444.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,7716</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,7 +146,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="787.3333333333334,7380" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="787.3333333333334,7571.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_sql" />
       <Variable x:TypeArguments="x:Int32" Name="api_response_code" />
@@ -182,7 +182,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="Dsn=PostgreSQL35W" DatabaseConnection="[db_connection_str]" />
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dt_sql]" DisplayName="Run Query" ExistingDbConnection="[db_connection_str]" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT *&#xA;FROM score_board_users&#xA;WHERE to_date(score_board_date, 'DD-MM-YYYY')&#xA;      BETWEEN (CURRENT_DATE - INTERVAL '1 DAY')&#xA;          AND CURRENT_DATE;">
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dt_sql]" DisplayName="Run Query" ExistingDbConnection="[db_connection_str]" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT *&#xD;&#xA;FROM score_board_users&#xD;&#xA;WHERE to_date(score_board_date, 'DD-MM-YYYY') = CURRENT_DATE;">
               <ui:ExecuteQuery.Parameters>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:ExecuteQuery.Parameters>
@@ -208,7 +208,7 @@
       </TryCatch>
       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488.6666666666667,54" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,1654" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,1592" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -234,7 +234,7 @@
               </Assign.Value>
             </Assign>
             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[path.GetExtension(file_n).ToLower]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="434,82.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[file_path]</OutArgument>
               </Assign.To>
@@ -274,35 +274,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
-    <Assign sap:VirtualizedContainerService.HintSize="725.3333333333334,86" sap2010:WorkflowViewState.IdRef="Assign_20">
-      <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataTable">[sorted_dt]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[dt_sql.AsEnumerable() _
-    .OrderBy(Function(r) If(r("whatsapp_group_name").ToString = "SB - Consolidated", 2, 1)) _
-    .CopyToDataTable()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="725.3333333333334,54" sap2010:WorkflowViewState.IdRef="CommentOut_10">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,226.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_25">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[sorted_dt]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="C:\Users\User\Downloads\Book1.xlsx" />
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="725.3333333333334,6238.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="725.3333333333334,6650" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -310,22 +282,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <If Condition="[dt_sql.Rows.Count &gt; 0]" DisplayName="Process-If" sap:VirtualizedContainerService.HintSize="686.6666666666666,5999.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[dt_sql.Rows.Count &gt; 0]" DisplayName="Process-If" sap:VirtualizedContainerService.HintSize="686.6666666666666,6410.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="652.6666666666666,5815.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence sap:VirtualizedContainerService.HintSize="652.6666666666666,6226.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="610.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[dt_sql.Rows.Count.ToString+&quot; Rows Fetched from Database&quot;]" />
-              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: WhatsApp" sap:VirtualizedContainerService.HintSize="610.6666666666666,5543.333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="b3bff615-18b2-4e5d-93ad-2ecd19cfb684" Version="V2" WindowResize="Maximize">
+              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: WhatsApp" sap:VirtualizedContainerService.HintSize="610.6666666666666,5954.666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="b3bff615-18b2-4e5d-93ad-2ecd19cfb684" Version="V2" WindowResize="Maximize">
                 <uix:NApplicationCard.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="576.6666666666666,5324" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="576.6666666666666,5735.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="upr:ILocalResource" Name="attachmen" />
                       </Sequence.Variables>
@@ -334,13 +306,13 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[sorted_dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514.6666666666666,5208" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_sql]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514.6666666666666,5619.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480.6666666666667,5018" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480.6666666666667,5429.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="group_name" />
                                 <Variable x:TypeArguments="x:String" Name="pdf_url" />
@@ -485,7 +457,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:CommentOut>
                               <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[LogFile_Exists]" sap:VirtualizedContainerService.HintSize="438.6666666666667,118.66666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[text_file_path]" PathType="File" />
-                              <If Condition="[LogFile_Exists]" DisplayName="Maintaining log files for downloaded files" sap:VirtualizedContainerService.HintSize="438.6666666666667,418.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If Condition="[LogFile_Exists]" DisplayName="Maintaining log files for downloaded files" sap:VirtualizedContainerService.HintSize="438.6666666666667,642.6666666666666" sap2010:WorkflowViewState.IdRef="If_3">
                                 <If.Then>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,234.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -702,6 +674,7 @@
                                 </ui:TypeInto.Target>
                               </ui:TypeInto>
                               <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[text_file_path]" sap:VirtualizedContainerService.HintSize="438.6666666666667,136.66666666666666" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[pdf_name+&quot; ----------uploaded to &quot;+group_name+&quot; ---------at &quot;+Now.ToString]" UseDefaultEncoding="False" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438.6666666666667,147.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[pdf_name+&quot; --------uploaded to &quot;+group_name+&quot; -------at &quot;+Now.ToString]" />
                               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438.6666666666667,54" sap2010:WorkflowViewState.IdRef="CommentOut_8">
                                 <ui:CommentOut.Body>
                                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,333.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_12">
@@ -789,13 +762,13 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence sap:VirtualizedContainerService.HintSize="534,1236.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_22">
+        <Sequence sap:VirtualizedContainerService.HintSize="534,1004.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_22">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Email sending" sap:VirtualizedContainerService.HintSize="472,1126" sap2010:WorkflowViewState.IdRef="Sequence_21">
+          <Sequence DisplayName="Email sending" sap:VirtualizedContainerService.HintSize="472,894" sap2010:WorkflowViewState.IdRef="Sequence_21">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="logfile_exists_mail" />
             </Sequence.Variables>
@@ -805,7 +778,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:FileExistsX DisplayName="File Exists" Exists="[logfile_exists_mail]" sap:VirtualizedContainerService.HintSize="410,136.66666666666666" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[text_file_path]" />
-            <If Condition="[logfile_exists_mail]" sap:VirtualizedContainerService.HintSize="410,838.6666666666666" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[logfile_exists_mail]" sap:VirtualizedContainerService.HintSize="410,606.6666666666666" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,422.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
                   <sap:WorkflowViewStateService.ViewState>
